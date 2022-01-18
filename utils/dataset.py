@@ -26,8 +26,10 @@ class CaptionInContext(Dataset):
         self.mode = mode
         self.transforms = transforms
         self.text_field = text_field
+        # self.flip_rotate_transform = Sequence(
+        #     [RandomHorizontalFlip(0.8), RandomScale(0.2, diff=True), RandomRotate(10)])
         self.flip_rotate_transform = Sequence(
-            [RandomHorizontalFlip(0.8), RandomScale(0.2, diff=True), RandomRotate(10)])
+            [RandomHorizontalFlip(0.8), RandomRotate(10)])
 
     def __getitem__(self, index):
         """
