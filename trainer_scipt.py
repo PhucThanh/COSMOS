@@ -160,7 +160,7 @@ def train_joint_model():
         if avg_test_loss <= best_loss:
             counter = 0
             best_loss = avg_test_loss
-            torch.save(combined_model.state_dict(), 'models/' + model_name + '.pt')
+            torch.save(combined_model.state_dict(),BASE_DIR + 'models/' + model_name + '.pt')
             print("Best model saved/updated..")
             torch.cuda.empty_cache()
         else:
