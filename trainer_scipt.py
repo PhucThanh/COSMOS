@@ -157,12 +157,12 @@ def train_joint_model():
         # Validation epoch
         avg_test_loss = evaluate_model(epoch)
         scheduler.step(avg_test_loss)
+        torch.save(combined_model.state_dict(),BASE_DIR + 'models/' + model_name + '.pt')
+        print("Model saved/updated..")
+        torch.cuda.empty_cache()
         if avg_test_loss <= best_loss:
             counter = 0
             best_loss = avg_test_loss
-            torch.save(combined_model.state_dict(),BASE_DIR + 'models/' + model_name + '.pt')
-            print("Best model saved/updated..")
-            torch.cuda.empty_cache()
         else:
             counter += 1
             if counter >= patience:
